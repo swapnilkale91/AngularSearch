@@ -1,2 +1,21 @@
-<app-image-details></app-image-details>
-<p>main works!</p>
+<app-image-details [imagedetails]="searchresults"></app-image-details>
+<div class="mat-app-background basic-container">
+	<mat-table [dataSource]="searchresults">
+		<ng-container matColumnDef="name">
+			<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+			<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+		</ng-container>
+		<ng-container matColumnDef="imageurl">
+			<mat-header-cell *matHeaderCellDef> ImageURL </mat-header-cell>
+			<mat-cell *matCellDef="let element"> {{element.imageurl}} </mat-cell>
+		</ng-container>
+		<ng-container matColumnDef="description">
+			<mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+			<mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+		</ng-container>
+		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+	</mat-table>
+</div>
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" (page)="getSearchResults($event)">
+</mat-paginator>

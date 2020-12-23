@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { PageEvent } from '@angular/material/paginator';
 
 export interface SearchDTO {
 	id: number;
 	name: string;
-	image: string;
+	imageurl: string;
 	description: string;
 }
 
@@ -15,6 +16,11 @@ export interface SearchDTO {
 })
 export class MainComponent implements OnInit {
 	public searchresults: SearchDTO[] = [];
+	public length: number;
+	public pageSize: number;
+	public pageSizeOptions: number;
+	public displayedColumns: string[] = ['name', 'imageurl', 'description'];
+
 	constructor(private dataService: DataService) {
 	}
 
@@ -22,8 +28,9 @@ export class MainComponent implements OnInit {
 		this.getSearchResults();
 	}
 
-	public getSearchResults(): void {
-		this.dataService.getData('/search?itemsperpage=10&pagenumber=1').subscribe((searchresults: SearchDTO) => {
+	public getSearchResults(event? :PageEvent): void {
+		console.log('event : ', event);
+		this.dataService.getData('/search?itemsperpage=7&pagenumber=1&orderby=id').subscribe((searchresults: SearchDTO) => {
 			this.searchresults = JSON.parse(JSON.stringify(searchresults));
 			console.log(this.searchresults);
 		}, (error: any) => {

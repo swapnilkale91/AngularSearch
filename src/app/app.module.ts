@@ -7,6 +7,8 @@ import { MainComponent } from './main/main.component';
 import { ImageDetailsComponent } from './image-details/image-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {MatCardModule} from '@angular/material/card';
 	AppRoutingModule,
 	BrowserAnimationsModule,
 	HttpClientModule,
-	MatCardModule
+	MatCardModule,
+	MatPaginatorModule,
+	MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
