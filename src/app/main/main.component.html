@@ -23,7 +23,7 @@
 		</div>
 	</div>
 	<app-image-details [imagedetails]="searchresults"></app-image-details>
-	<div class="mat-app-background table-container">
+	<div class="mat-app-background table-container" *ngIf="this.searchresults.length > 0">
 		<mat-table [dataSource]="searchresults">
 			<ng-container matColumnDef="id">
 				<mat-header-cell *matHeaderCellDef> Id </mat-header-cell>

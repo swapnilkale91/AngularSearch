@@ -7,11 +7,9 @@ import { environment } from '../../environments/environment';
 	providedIn: 'root'
 })
 export class DataService {
-	baseUrl = environment.baseUrl;
 	public constructor(private http: HttpClient) { }
 
 	public getData(uri: string): Observable<Object> {
-		let url = this.baseUrl + uri;
-		return this.http.get(url);
+		return this.http.get(uri);
 	}
 }

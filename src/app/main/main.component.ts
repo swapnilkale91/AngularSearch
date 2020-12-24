@@ -82,5 +82,6 @@ export class MainComponent implements OnInit {
 	public clearSearchValue() {
 		this.searchvalue = '';
 		localStorage.setItem('searchvalue', '');
+		this.getSearchResults();
 	}
 }
