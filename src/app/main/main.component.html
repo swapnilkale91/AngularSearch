@@ -2,26 +2,33 @@
 
 	<div class="searchandsort">
 		<div class="search-form">
-				<mat-form-field class="example-full-width">
-					<mat-label>Search</mat-label>
-					<input (keydown.enter)="getSearchResultsFromSearchBox(searchValue.value)" #searchValue matInput placeholder="Name or description" [value]="searchvalue">
-				</mat-form-field>
+			<mat-form-field>
+				<mat-label>Search</mat-label>
+				<input (keydown.enter)="getSearchResultsFromSearchBox(searchValue.value)" #searchValue matInput
+					placeholder="Name or description" [value]="searchvalue">
+				<button mat-button *ngIf="searchvalue" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearchValue()">
+					<mat-icon inline="true">close</mat-icon>
+				</button>
+			</mat-form-field>
 		</div>
 		<div class="sort-dropdown">
 			<mat-form-field>
 				<mat-label>Sort</mat-label>
-				<mat-select (selectionChange)="getSearchResultsFromSort($event)">
-					<mat-option *ngFor="let sortvalue of sortvalues" [value]="sortvalue.value"> 
+				<mat-select [(value)]="selectedsortvalue" (selectionChange)="getSearchResultsFromSort($event)">
+					<mat-option *ngFor="let sortvalue of sortvalues" [value]="sortvalue.value">
 						{{sortvalue.viewValue}}
 					</mat-option>
 				</mat-select>
 			</mat-form-field>
 		</div>
 	</div>
-
 	<app-image-details [imagedetails]="searchresults"></app-image-details>
-	<div class="mat-app-background basic-container">
+	<div class="mat-app-background table-container">
 		<mat-table [dataSource]="searchresults">
+			<ng-container matColumnDef="id">
+				<mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+			</ng-container>
 			<ng-container matColumnDef="name">
 				<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
 				<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>

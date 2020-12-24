@@ -1,10 +1,11 @@
-.basic-container {
-	padding: 70px;
+.main-container {
+	margin: 2% auto;
+	width: 80%
 }
 
-.main-container {
-	margin: 20px auto;
-	width: 80%
+.table-container {
+	padding: 1.5%;
+	margin-top: 2%;
 }
 
 .search-form {
@@ -20,3 +21,130 @@
 	justify-content: space-between;
 }
 
+.mat-column-name, .mat-column-description, .mat-column-id, .mat-column-imageurl {
+	padding: 1% 1% 1% 1%;     
+}
+
+.mat-column-id {
+	max-width: 5%;
+}
+
+.mat-column-name {
+	max-width: 20%;
+}
+
+.mat-column-imageurl {
+	max-width: 25%;
+}
+
+.mat-column-description {
+	max-width: 30%;
+}
+
+@media (max-width: 480px) {
+
+	.main-container {
+		margin: 2% auto;
+		width: 90%
+	}
+
+	.mat-column-id {
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;       
+	} 
+	
+	.mat-column-imageurl {
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;       
+	} 
+
+	.mat-column-name {
+		max-width: 35%;
+	}
+	
+	.mat-column-description {
+		max-width: 65%;
+	}
+
+	.mat-form-field {
+		width: 45% !important;
+	}
+
+	.searchandsort {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+/* Portrait and Landscape */
+@media (max-width: 640px) {
+
+	.main-container {
+		margin: 2% auto;
+		width: 90%
+	}
+
+	.mat-column-id {
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;       
+	} 
+	
+	.mat-column-imageurl {
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;       
+	} 
+
+	.mat-column-name {
+		max-width: 35%;
+	}
+	
+	.mat-column-description {
+		max-width: 65%;
+	}
+
+	.mat-form-field {
+		width: 45% !important;
+	}
+}
+
+
+/* Portrait and Landscape */
+@media (max-width: 800px) {
+
+	.main-container {
+		margin: 2% auto;
+		width: 90%
+	}
+	
+	.mat-column-imageurl {
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;       
+	}
+		
+	.mat-column-id {
+		max-width: 15%;
+	}
+
+	.mat-column-name {
+		max-width: 25%;
+	}
+	
+	.mat-column-description {
+		max-width: 60%;
+	}
+}

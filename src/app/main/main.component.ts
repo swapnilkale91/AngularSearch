@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { PageEvent } from '@angular/material/paginator';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 
 export interface SearchDTO {
 	id: number;
@@ -28,18 +28,23 @@ export class MainComponent implements OnInit {
 	public pagenumber: number = 1;
 	public itemsperpage: number = 6;
 	public itemsperpageoptions: number[] = [6];
-	public displayedColumns: string[] = ['name', 'imageurl', 'description'];
+	public displayedColumns: string[] = ['id', 'name', 'imageurl', 'description'];
 	public sortvalues: Sort[] = [
 		{ value: 'name asc', viewValue: 'Name (Ascending)' },
 		{ value: 'name desc', viewValue: 'Name (Descending)' },
 		{ value: 'datelastedited asc', viewValue: 'Date Last Edited (Ascending)' },
 		{ value: 'datelastedited desc', viewValue: 'Date Last Edited (Descending)' },
 	];
+	public selectedsortvalue: string;
+
+	@ViewChild(MatPaginator, { 'static': false }) paginator: MatPaginator;
 
 	constructor(private dataService: DataService) {
 	}
 
 	ngOnInit() {
+		this.searchvalue = localStorage.getItem('searchvalue');
+		this.selectedsortvalue= localStorage.getItem('sortvalue');
 		this.getSearchResults();
 	}
 
@@ -62,12 +67,20 @@ export class MainComponent implements OnInit {
 	public getSearchResultsFromSearchBox(search: string): void {
 		this.searchvalue = search;
 		this.pagenumber = 1;
+		localStorage.setItem('searchvalue', this.searchvalue);
+		this.paginator.firstPage();
 		this.getSearchResults();
 	}
 
 	public getSearchResultsFromSort(sortevent: any): void {
 		this.orderby = sortevent.value.split(' ')[0];
 		this.orderdirection = sortevent.value.split(' ')[1];
+		localStorage.setItem("sortvalue", sortevent.value);
 		this.getSearchResults();
+	}
+	
+	public clearSearchValue() {
+		this.searchvalue = '';
+		localStorage.setItem('searchvalue', '');
 	}
 }

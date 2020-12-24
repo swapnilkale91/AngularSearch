@@ -1,5 +1,5 @@
 <div class="container">
-	<mat-card class="example-card" *ngFor="let imagedetail of imagedetails; let i = index">
+	<mat-card class="search-card" *ngFor="let imagedetail of imagedetails">
 		<img mat-card-image [src]="imagedetail.imageurl" [alt]="imagedetail.name">
 		<mat-card-content>
 			<h1>{{imagedetail.name}}</h1>
