@@ -1,7 +1,12 @@
 
-# AngularSearch
+# Angular Full Text Search
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+This project displays the search results and (https://github.com/swapnilkale91/NodeSearch) as backend.
+
+## Running the app
+
+Run `npm run start` to run the code and open `http://localhost:4200` on the browser.
+It uses proxy config to avoid CORS error. Make sure Node app is running on 3000. 
 
 ## Development server
 
