@@ -6,9 +6,7 @@
 				<mat-label>Search</mat-label>
 				<input (keydown.enter)="getSearchResultsFromSearchBox(searchValue.value)" #searchValue matInput
 					placeholder="Name or description" [value]="searchvalue">
-				<button mat-button *ngIf="searchvalue" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearchValue()">
-					<mat-icon inline="true">close</mat-icon>
-				</button>
+				<mat-icon id="searchClear" inline="true" *ngIf="searchvalue" matSuffix mat-icon-button (click)="clearSearchValue()">close</mat-icon>
 			</mat-form-field>
 		</div>
 		<div class="sort-dropdown">

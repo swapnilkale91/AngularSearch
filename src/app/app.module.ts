@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon'
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { MatIconModule } from '@angular/material/icon'
 	MatSelectModule,
 	MatIconModule
   ],
-  providers: [],
+  providers: [ 
+	  { provide: "BACKEND_API_URL", useValue: environment.apiUrl }
+	],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

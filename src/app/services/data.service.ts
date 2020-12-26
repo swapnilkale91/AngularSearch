@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -7,9 +7,10 @@ import { environment } from '../../environments/environment';
 	providedIn: 'root'
 })
 export class DataService {
-	public constructor(private http: HttpClient) { }
+	public constructor(private http: HttpClient, @Inject('BACKEND_API_URL') private apiUrl: string) { }
 
 	public getData(uri: string): Observable<Object> {
-		return this.http.get(uri);
+		let url = this.apiUrl + uri;
+		return this.http.get(url);
 	}
 }

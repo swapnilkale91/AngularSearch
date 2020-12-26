@@ -41,6 +41,10 @@
 	max-width: 30%;
 }
 
+#searchClear {
+	cursor: pointer;
+ }
+
 @media (max-width: 480px) {
 
 	.main-container {

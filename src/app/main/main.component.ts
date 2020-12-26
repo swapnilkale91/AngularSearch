@@ -44,7 +44,7 @@ export class MainComponent implements OnInit {
 
 	ngOnInit() {
 		this.searchvalue = localStorage.getItem('searchvalue');
-		this.selectedsortvalue= localStorage.getItem('sortvalue');
+		this.selectedsortvalue = localStorage.getItem('sortvalue');
 		this.getSearchResults();
 	}
 
@@ -78,7 +78,7 @@ export class MainComponent implements OnInit {
 		localStorage.setItem("sortvalue", sortevent.value);
 		this.getSearchResults();
 	}
-	
+
 	public clearSearchValue() {
 		this.searchvalue = '';
 		localStorage.setItem('searchvalue', '');
